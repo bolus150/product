@@ -30,26 +30,18 @@ class Product extends Model
         ));
         return true;
     }
-    public function updateProductWithPrice($request, $id) {
-        self::where('id', $id)->update(array(
+    public function updateProductWithPrice($request) {
+        self::where('id', $this->id)->update(array(
             'name' => $request->name,
             'description' => $request->description,
         ));
         if(!empty($request->price)) {
             Price::create(array(
-                'product_id' => $id,
+                'product_id' => $this->id,
                 'price' => $request->price,
                 'active' => 1
             ));
         }
         return true;
     }
-
-//    public function getProductAndActviePrice() {
-//        return DB::table('products')
-//            ->select('*')
-//            ->join('prices', 'products.id', '=', 'prices.product_id')
-//            ->where('prices.active', 1)
-//            ->get();
-//    }
 }

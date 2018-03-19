@@ -24,7 +24,7 @@ class PriceRequest extends FormRequest
     public function rules()
     {
         return [
-            'priceEdit'         => 'required|regex:/^\d*(\.\d{1,2})?$/',
+            'price'         => 'required|regex:/^\d*(\.\d{1,2})?$/',
         ];
     }
 }

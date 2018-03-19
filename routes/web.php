@@ -11,11 +11,5 @@
 |
 */
 
-Route::get('/', 'ProductController@index');
-Route::get('/product/create', 'ProductController@create');
-Route::post('/product/update/{product}', 'ProductController@update');
-Route::get('/product/edit/{id}', 'ProductController@edit');
-Route::post('/product/store', 'ProductController@store');
-Route::get('/product/delete/{id}', 'ProductController@destroy');
-Route::get('/price/delete/{id}', 'PriceController@delete');
-Route::get('/price/save/{id}', 'PriceController@update');
+Route::resource('/product', 'ProductController', ['except' => ['show']]);
+Route::resource('/price', 'PriceController', ['except' => ['index', 'create', 'store', 'show']]);

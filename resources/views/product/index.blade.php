@@ -22,8 +22,12 @@
                     <td>{{$product->description}}</td>
                     <td>
                         <div class="pull-left">
-                            <a href="{{ url('product/edit/' . $product->id) }}" class="btn btn-primary">{{__('product.edit')}}</a>
-                            <a href="{{ url('product/delete/' . $product->id) }}" class="btn btn-danger">{{__('product.delete')}}</a>
+                            <a href="{{ url('product/' . $product->id . '/edit' ) }}" class="btn btn-primary pull-left mr-5">{{__('product.edit')}}</a>
+                            <form action="{{url('product/' . $product->id)}}" method="POST" class="pull-left">
+                                {{ csrf_field() }}
+                                {{ method_field('DELETE') }}
+                                <button class="btn btn-danger">{{__('product.delete')}}</button>
+                            </form>
                         </div>
                     </td>
                 </tr>
